@@ -1,0 +1,38 @@
+ANALIZA RJESENJA
+
+1.	Praćenje popisa zrakoplova HZNS-a
+Popis aviona se nalazi u tekstualnoj datoteci 'avioni.txt' a popis helikoptera u 'Helikopteri.txt'. Popis je na početku ubačen u vektor 'zrakoplov' klase 'Zrakoplovi'.
+Upis se izvršava funkcijama: void InputAvion(vector<Zrakoplovi>&zrakoplov) i void InputHelic(vector<Zrakoplovi>&zrakoplov).
+Ispis zrakoplova vrši funkcija void IspisZrakoplova(vector<Zrakoplovi>zrakoplov).
+Popis zrakoplova sadrži redom podatke:
+•	Naziv zrakoplova (string)
+•	Call sign zrakoplova (string)
+•	Sati naleta protekli od D check-a
+•	Sati naleta protekli od C check-a
+•	Sati naleta protekli od B check-a
+•	Sati naleta protekli od A check-a
+•	Vrijeme u mjesecima proteklo od D check-a
+•	Vrijeme u mjesecima proteklo od B check-a
+
+2.	Unos novog zrakoplova u flotu HZNS-a
+Funkcija void UnesiNoviZrakoplov() nudi izbor upisa aviona i helikoptera. 
+Da bi se novi zrakoplov unio u vektor pozivaju se funkcija void UnesiNoviAvion() ili void UnesiNoviHelikopter(). 
+Nakon upisa se pozivaju funkcije void OutputAvion(vector<Avion>novi) ili void OutputHelic(vector<Helikopter>novih) koje upisuju vektor u tekstualnu datoteku 'avioni.txt' ili 'Helikopteri.txt'.
+
+3.	Provjera zrakoplova
+Poziva se funkcija void provjeraa(vector<Zrakoplovi>zrakoplov) koja unutar sebe poziva 4 funkcije (D(zrakoplov), C(zrakoplov), B(zrakoplov), A(zrakoplov)) koje za postavljaju uvjete pojedine provjere s obzirom na protekle sate naleta i vrijeme od zadnje provjere. Nakon provjere ispisuje se call sign zrakoplova koji treba na provjeru i naziv te provjere. 
+
+4.	Unos izvršene provjere
+Nakon završene provjere zrakoplova poziva se funkcija void unosCheck(vector<Zrakoplovi>zrakoplov). Ta funkcija ovisno o odabranom zrakoplovu i odrađenoj provjeri postavlja sate naleta/vrijeme na 0. Nakon upisa potrebno je nove podatke unijeti u tekstualne datoteke -> Poziva se funkcija void OutputNakonChecka (vector<Zrakoplovi>zrakoplov).
+Ta funkcija poziva funkcije OutputNakonCheckaAvion(zrakoplov) i OutputNakonCheckaHelic(zrakoplov). 
+Funkcija OutputNakonCheckaAvion(zrakoplov) upisuje avione u tekstualnu datoteku 'avioni' -> potrebno je pratiti količinu aviona da se helikopteri iz vektora 'zrakoplovi' ne bi upisali u datoteku. Nakon upisa aviona, upisuju se helikopteri u datoteku 'Helikopteri' ispisani su iz vektora 'zrakoplovi' od polja u vektoru na kojem počinju helikopteri do kraja veličine vektora.
+If petlja unutar ove dvije funkcije sluzi da se zadnji << endl; ne bi ispisao.
+
+5.	Sustav za praćenje rezervnih dijelova
+Na početku programa se iz tekstualne datoteke 'rezervni.txt' upisuju podaci u vektor 'dio' klase 'Rezervni' pomoću funkcije void InputRezervni(vector<Rezervni>&dio).
+Funkcija void SustavRezervni(vector<Rezervni>&dio) sadrži izbornik sa svim mogućnostima sustava rezervnih dijelova.
+Funkcija void IspisRezervni(vector<Rezervni>&dio) ispisiva naziv rezervnog dijela (string), količinu u skladištu (int) i minimalnu propisanu količinu dijela (int).
+Funkcijom void NoviRezervni(vector<Rezervni>&dio) može se upisati novi dio koji još ne postoji u bazi. Nakon upisa novi dio se upisuje u tekstualni file funkcijom void OutputunosRezervni(vector<Rezervni>dio).
+Funkcijom void Promjena_stanja_Rezervni(vector<Rezervni>&dio) može se promijeniti količina rezervnog dijela na stanju (slučaj kupnje novog dijela ili potrošnje postojećih). Nakon upisa promjena stanja se upisuje u tekstualni file funkcijom void OutputunosRezervni(vector<Rezervni>dio).
+
+Funkcijom void ProvjeraRezervnih(vector<Rezervni>&dio) uspoređuje se broj dijelova na stanju i propisanih minimuma. Ukoliko ima manje od propisanog ispisuje se naziv dijela te minimalna količina koju je potrebno kupiti.
